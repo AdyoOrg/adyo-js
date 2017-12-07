@@ -119,10 +119,10 @@ params: {
 	dom_id: 'UNIQUE-ID-OF-DIV', // Required
 	network_id: 13, // Required
 	zone_id: 1, // Required
-    user_id: "user-123abc", // Optional string
+        user_id: "user-123abc", // Optional string
   	keywords: "bmw,audit,volvo", // Optional comma seperated string
       
-    // Optional dimensions override (E.g zone_id 1 has a different height and width to our current situation). Used to fetch the closest sized ad.
+        // Optional dimensions override (E.g zone_id 1 has a different height and width to our current situation). Used to fetch the closest sized ad.
   	width: 500,
   	height: 500,
 }
