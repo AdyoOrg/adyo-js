@@ -38,7 +38,7 @@ Copy the script below and place it just before the closing `</body>` tag:
     s.type = 'text/javascript';
     s.src = 'adyo.min.js';
     s.async = true;
-    s.onload = s.onreadystatechange = () => {
+    s.onload = s.onreadystatechange = function () {
       var rs = this.readyState; 
       if (rs) if (rs != 'complete') if (rs != 'loaded') return;
   
