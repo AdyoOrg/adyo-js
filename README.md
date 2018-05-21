@@ -156,3 +156,4 @@ For any feedback, please contact us at: devops@unitx.co.za or create an issue. Y
 - v1.0.0 - Initial Release.
 - v1.0.1 - Added functionality to show popup depending on the placement targets. Performance enhancements and bug fixes.
 - v1.0.2 - Changed ES6 style code to vanilla to support older platforms.
+- v1.0.3 - Minor improvements.
