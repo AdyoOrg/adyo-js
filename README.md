@@ -36,7 +36,6 @@ Copy the script below and place it just before the closing `</body>` tag:
     var protocol = (window.location.protocol === 'https:' ? 'https:' : 'http:');
     s.src = protocol.concat('//cdn.adyo.co.za/adyo.min.js');
     s.type = 'text/javascript';
-    s.src = 'adyo.min.js';
     s.async = true;
     s.onload = s.onreadystatechange = function () {
       var rs = this.readyState; 
