@@ -6,8 +6,17 @@ The Adyo JS SDK makes it easy to integrate Adyo ads into your website. Using our
 
 ## Basic Usage
 
-To get started, two components are required in the HTML of your web page:
+To get started, three components are required in the HTML of your web page:
 
+### Add Adyo on document head
+Include the Adyo JS in your HTML head:
+
+``` html
+<head>
+  <title>Example Page</title>
+  <script type="text/javascript" src="https://cdn.adyo.co.za/adyo-v2.min.js"></script>
+</head>
+```
 ### Zone Div Tag
 
 Place a `div` tag in the `body` of your HTML where you would like the ad to be displayed. The `div` requires a unique ID which will be used by the JS SDK.
@@ -19,73 +28,19 @@ Place a `div` tag in the `body` of your HTML where you would like the ad to be d
 
 ### Javascript
 
-There are two ways to implement the Javascript tags:
-
-* Async (Recommended)
-* Synchronous (for earlier browsers without Async support)
-
-#### Method 1: Async
+Here is an example of how to implement:
 
 Copy the script below and place it just before the closing `</body>` tag:
 
 ```js
 <script type="text/javascript">
   (function(){
-    var s = document.createElement('script'); 
-    s.type = 'text/javascript';
-    var protocol = (window.location.protocol === 'https:' ? 'https:' : 'http:');
-    s.src = protocol.concat('//cdn.adyo.co.za/adyo.min.js');
-    s.type = 'text/javascript';
-    s.async = true;
-    s.onload = s.onreadystatechange = function () {
-      var rs = this.readyState; 
-      if (rs) if (rs != 'complete') if (rs != 'loaded') return;
-  
-      try {
-        Adyo = window.Adyo || {}; Adyo.ads = Adyo.ads || [];
-        Adyo.ads.push({
-          handler: function(params) { 
-            Adyo.init(params); 
-          },
-          params: { 
-            dom_id: 'UNIQUE-ID-OF-DIV',
-            network_id: 13, // YOUR NETWORK ID GOES HERE
-            zone_id: 1, // YOUR ZONE ID GOES HERE
-          }
-        });
-        
-      } catch (e) {};
-    }
-  
-    var n = document.getElementsByTagName('script')[0]; 
-    n.parentNode.insertBefore(s, n);
-  }());
-</script>
-```
 
-
-
-#### Method 2: Synchronous
-
-Include the Adyo JS in your HTML head:
-
-``` html
-<head>
-  ...
-  <script type="text/javascript" src="https://cdn.adyo.co.za/adyo.min.js"></script>
-</head>
-```
-
-
-Copy the script below and place it just before the closing `</body>` tag:
-
-```javascript
-<script type="text/javascript">
-  (function(){
-    Adyo = window.Adyo || {}; Adyo.ads = Adyo.ads || [];
-    Adyo.ads.push({
+    var adyo = new Adyo();
+    
+    adyo.ads.push({
       handler: function(params) { 
-        Adyo.init(params); 
+        adyo.init(params); 
       },
       params: { 
         dom_id: 'UNIQUE-ID-OF-DIV',
@@ -94,9 +49,8 @@ Copy the script below and place it just before the closing `</body>` tag:
       }
     });
   }());
-</script>	
+</script>
 ```
-
 
 
 
@@ -148,11 +102,3 @@ To solve this situation, we can provide the `height` and `width` parameters in t
 
 For any feedback, please contact us at: devops@unitx.co.za or create an issue. You are also more than welcome to send a pull request for any changes or bug fixes.
 
-
-
-## Changelog
-
-- v1.0.0 - Initial Release.
-- v1.0.1 - Added functionality to show popup depending on the placement targets. Performance enhancements and bug fixes.
-- v1.0.2 - Changed ES6 style code to vanilla to support older platforms.
-- v1.0.3 - Minor improvements.
